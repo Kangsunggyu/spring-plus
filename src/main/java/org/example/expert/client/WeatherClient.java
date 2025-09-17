@@ -17,11 +17,9 @@ import java.time.format.DateTimeFormatter;
 public class WeatherClient {
 
     private final RestTemplate restTemplate;
-
     public WeatherClient(RestTemplateBuilder builder) {
         this.restTemplate = builder.build();
     }
-
     public String getTodayWeather() {
         ResponseEntity<WeatherDto[]> responseEntity =
                 restTemplate.getForEntity(buildWeatherApiUri(), WeatherDto[].class);
