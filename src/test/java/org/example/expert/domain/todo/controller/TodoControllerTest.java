@@ -35,9 +35,9 @@ class TodoControllerTest {
         // given
         long todoId = 1L;
         String title = "title";
-        AuthUser authUser = new AuthUser(1L, "email", UserRole.USER);
+        AuthUser authUser = new AuthUser(1L, "email", UserRole.USER, "nickname");
         User user = User.fromAuthUser(authUser);
-        UserResponse userResponse = new UserResponse(user.getId(), user.getEmail());
+        UserResponse userResponse = new UserResponse(user.getId(), user.getEmail(), user.getNickname());
         TodoResponse response = new TodoResponse(
                 todoId,
                 title,
@@ -58,6 +58,8 @@ class TodoControllerTest {
                 .andExpect(jsonPath("$.title").value(title));
     }
 
+
+    /*
     @Test
     void todo_단건_조회_시_todo가_존재하지_않아_예외가_발생한다() throws Exception {
         // given
@@ -72,6 +74,23 @@ class TodoControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value(HttpStatus.OK.name()))
                 .andExpect(jsonPath("$.code").value(HttpStatus.OK.value()))
+                .andExpect(jsonPath("$.message").value("Todo not found"));
+    }
+     */
+    @Test
+    void todo_단건_조회_시_todo가_존재하지_않아_예외가_발생한다() throws Exception {
+        // given
+        long todoId = 1L;
+
+        // when
+        when(todoService.getTodo(todoId))
+                .thenThrow(new InvalidRequestException("Todo not found"));
+
+        // then
+        mockMvc.perform(get("/todos/{todoId}", todoId))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(HttpStatus.BAD_REQUEST.name()))
+                .andExpect(jsonPath("$.code").value(HttpStatus.BAD_REQUEST.value()))
                 .andExpect(jsonPath("$.message").value("Todo not found"));
     }
 }
