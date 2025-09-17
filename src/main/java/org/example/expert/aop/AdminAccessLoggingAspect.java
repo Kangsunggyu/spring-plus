@@ -28,3 +28,15 @@ public class AdminAccessLoggingAspect {
                 userId, requestTime, requestUrl, joinPoint.getSignature().getName());
     }
 }
+
+/*
+@After("execution(* org.example.expert.domain.user.controller.UserController.getUser(..))")
+    public void logAfterChangeUserRole(JoinPoint joinPoint) {
+        String userId = String.valueOf(request.getAttribute("userId"));
+        String requestUrl = request.getRequestURI();
+        LocalDateTime requestTime = LocalDateTime.now();
+
+        log.info("Admin Access Log - User ID: {}, Request Time: {}, Request URL: {}, Method: {}",
+                userId, requestTime, requestUrl, joinPoint.getSignature().getName());
+    }
+ */
