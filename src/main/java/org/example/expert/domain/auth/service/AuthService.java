@@ -35,10 +35,14 @@ public class AuthService {
 
         UserRole userRole = UserRole.of(signupRequest.getUserRole());
 
+        // 1.2 추가한 코드
+        String nickname = signupRequest.getNickname();
+
         User newUser = new User(
                 signupRequest.getEmail(),
                 encodedPassword,
-                userRole
+                userRole,
+                nickname
         );
         User savedUser = userRepository.save(newUser);
 
