@@ -1,4 +1,4 @@
-package org.example.expert.config;
+/*package org.example.expert.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.example.expert.domain.auth.exception.AuthException;
@@ -45,3 +45,4 @@ public class AuthUserArgumentResolver implements HandlerMethodArgumentResolver {
         return new AuthUser(userId, email, userRole, nickname);
     }
 }
+*/

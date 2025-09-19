@@ -1,4 +1,4 @@
-package org.example.expert.config;
+/*package org.example.expert.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -20,3 +20,4 @@ public class FilterConfig {
         return registrationBean;
     }
 }
+*/

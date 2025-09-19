@@ -1,3 +1,4 @@
+/*
 package org.example.expert.config;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
@@ -15,3 +16,5 @@ public class PasswordEncoder {
         return result.verified;
     }
 }
+
+ */

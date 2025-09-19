@@ -1,7 +1,9 @@
 package org.example.expert.domain.user.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.expert.config.PasswordEncoder;
+//import org.example.expert.config.PasswordEncoder;
+// 2.4 세큐리티에서 제공하는 엔코딩 사용하기
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.example.expert.domain.common.exception.InvalidRequestException;
 import org.example.expert.domain.user.dto.request.UserChangePasswordRequest;
 import org.example.expert.domain.user.dto.response.UserResponse;
