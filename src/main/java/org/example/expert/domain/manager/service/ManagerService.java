@@ -52,6 +52,7 @@ public class ManagerService {
 
         return new ManagerSaveResponse(
                 savedManagerUser.getId(),
+                todo.getId(),
                 new UserResponse(managerUser.getId(), managerUser.getEmail(), managerUser.getNickname())
         );
     }

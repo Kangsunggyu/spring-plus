@@ -39,6 +39,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull FilterChain chain
     ) throws ServletException, IOException {
         //HTTP 요청 헤더에서 "Authorization" 헤더값을 가져옴
+        String uri = httpRequest.getRequestURI();
+
+        // 인증 불필요한 경로는 그냥 패스
+        if (uri.startsWith("/auth") || uri.startsWith("/open")) {
+            chain.doFilter(httpRequest, httpResponse);
+            return;
+        }
+
         String authorizationHeader = httpRequest.getHeader("Authorization");
 
         log.info("JwtAuthenticationFilter - request URI: {}", httpRequest.getRequestURI());

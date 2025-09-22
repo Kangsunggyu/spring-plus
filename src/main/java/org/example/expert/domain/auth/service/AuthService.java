@@ -48,7 +48,7 @@ public class AuthService {
 
         String bearerToken = jwtUtil.createToken(savedUser.getId(), savedUser.getEmail(), userRole, savedUser.getNickname());
 
-        return new SignupResponse(bearerToken);
+        return new SignupResponse(savedUser.getId(), bearerToken);
     }
 
     public SigninResponse signin(SigninRequest signinRequest) {
